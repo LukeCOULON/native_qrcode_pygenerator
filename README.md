@@ -1,155 +1,157 @@
 # QRNativeGen 🐍
 
-**QRNativeGen** est un générateur de QR Codes développé entièrement en Python natif, sans aucune bibliothèque externe.
+**QRNativeGen** is a QR Code generator written entirely in native Python, without any external dependencies.
 
-Il permet de convertir une adresse IP, une URL ou du texte en QR Code, de l'afficher directement dans le terminal et de l'exporter au format PNG.
+It allows you to convert an IP address, URL or text into a QR Code, display it directly in your terminal and export it as a PNG image.
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-- Génération de QR Codes en local.
-- Support des adresses IPv4 et IPv6.
-- Support des URLs HTTP et HTTPS.
-- Encodage des données en UTF-8.
-- Affichage directement dans le terminal.
-- Export au format PNG.
-- Choix de la résolution de l'image.
-- Correction d'erreurs Reed-Solomon.
-- Sélection automatique du masque QR.
-- Aucune dépendance externe.
-- Utilisation exclusive de la bibliothèque standard Python.
+- Local QR Code generation.
+- IPv4 and IPv6 support.
+- HTTP and HTTPS URL support.
+- UTF-8 encoding.
+- Terminal QR Code display.
+- PNG image export.
+- Customizable image resolution.
+- Reed-Solomon error correction.
+- Automatic QR mask selection.
+- No external dependencies.
+- Python standard library only.
 
-## 📋 Prérequis
+## 📋 Requirements
 
-- Python 3.8 ou supérieur.
-- Aucun paquet externe à installer.
+- Python 3.8 or newer.
+- No additional packages required.
 
 ## 📦 Installation
 
-Clone le dépôt :
+Clone the repository:
 
 ```bash
-git clone https://github.com/USERNAME/QRNativeGen.git
+git clone https://github.com/LukeCOULON/native_qrcode_pygenerator.git
 ```
 
-Accède au répertoire :
+Navigate to the project directory:
 
 ```bash
-cd QRNativeGen
+cd native_qrcode_pygenerator
 ```
 
-Aucune installation supplémentaire n'est nécessaire.
+No additional installation is required.
 
-## 🚀 Utilisation
+## 🚀 Usage
 
-### Afficher un QR Code
+### Display a QR Code
 
 ```bash
 python qrnativegen.py https://google.com
 ```
 
-### Générer un QR Code à partir d'une IP
+### Generate a QR Code from an IP address
 
 ```bash
 python qrnativegen.py 192.168.1.1
 ```
 
-### Enregistrer en PNG
+### Save as PNG
 
 ```bash
 python qrnativegen.py https://google.com --save
 ```
 
-Par défaut, le fichier sera enregistré sous :
+By default, the generated image is saved as:
 
 ```text
 qrcode.png
 ```
 
-### Personnaliser le nom du fichier
+### Choose a custom filename
 
 ```bash
 python qrnativegen.py https://google.com --save google.png
 ```
 
-### Modifier la résolution
+### Customize image resolution
 
 ```bash
 python qrnativegen.py https://google.com --save google.png --scale 15
 ```
 
-Le paramètre `--scale` définit le nombre de pixels utilisés pour représenter chaque module du QR Code.
+The `--scale` option defines the number of pixels used for each QR Code module.
 
-## ⚙️ Options disponibles
+## ⚙️ Available options
 
 | Argument | Description |
 |---|---|
-| `target` | IP, URL ou texte à encoder |
-| `--save` | Enregistre le QR Code en PNG |
-| `--save fichier.png` | Définit le nom du fichier |
-| `--scale N` | Définit la résolution de l'image |
-| `--help` | Affiche l'aide |
+| `target` | IP address, URL or text to encode |
+| `--save` | Save the QR Code as PNG |
+| `--save filename.png` | Choose the output filename |
+| `--scale N` | Set image resolution |
+| `--help` | Display help |
 
-## 🧠 Fonctionnement technique
+## 🧠 Technical implementation
 
-QRNativeGen implémente directement les mécanismes de génération des QR Codes Model 2 :
+QRNativeGen implements the core mechanisms of QR Code Model 2:
 
-- **Byte Mode** : encodage des données.
-- **UTF-8** : prise en charge des caractères internationaux.
-- **GF(256)** : opérations dans un corps de Galois.
-- **Reed-Solomon** : correction des erreurs.
-- **Interleaving** : entrelacement des blocs de données.
-- **Finder Patterns** : motifs de localisation.
-- **Alignment Patterns** : motifs d'alignement.
-- **Timing Patterns** : motifs de synchronisation.
-- **BCH Encoding** : informations de format et de version.
-- **Mask Selection** : sélection automatique parmi les huit masques.
-- **PNG Encoder** : génération d'images sans bibliothèque graphique externe.
+- **Byte Mode:** data encoding.
+- **UTF-8:** international character support.
+- **GF(256):** Galois field arithmetic.
+- **Reed-Solomon:** error correction.
+- **Interleaving:** data and error correction block interleaving.
+- **Finder Patterns:** position detection patterns.
+- **Alignment Patterns:** alignment patterns.
+- **Timing Patterns:** synchronization patterns.
+- **BCH Encoding:** format and version information.
+- **Mask Selection:** automatic selection among eight masks.
+- **PNG Encoder:** image generation without external graphics libraries.
 
-## 📐 Spécifications
+## 📐 Specifications
 
-| Caractéristique | Valeur |
+| Specification | Value |
 |---|---|
 | Standard | QR Code Model 2 |
-| Versions | 1 à 10 |
-| Encodage | Byte Mode / UTF-8 |
-| Correction d'erreurs | ECC-L |
-| Masques | 0 à 7 |
-| Format d'export | PNG |
-| Dépendances | Aucune |
+| Versions | 1–10 |
+| Encoding | Byte Mode / UTF-8 |
+| Error correction | ECC-L |
+| Masks | 0–7 |
+| Export format | PNG |
+| Dependencies | None |
 
-## 📁 Structure du projet
+## 📁 Project structure
 
 ```text
-QRNativeGen/
+native_qrcode_pygenerator/
 │
 ├── qrnativegen.py
 ├── README.md
 └── qrcode.png
 ```
 
-## 🔒 Confidentialité
+## 🔒 Privacy
 
-QRNativeGen fonctionne entièrement en local.
+QRNativeGen runs entirely locally.
 
-- Aucune donnée n'est envoyée à un serveur.
-- Aucune connexion Internet n'est nécessaire pour générer un QR Code.
-- Aucune bibliothèque externe n'est utilisée.
+- No data is sent to external servers.
+- No Internet connection is required to generate QR Codes.
+- No external libraries are used.
 
-La connexion Internet reste évidemment nécessaire pour accéder à une URL encodée qui pointe vers un site distant.
+An Internet connection may still be required to access a generated QR Code pointing to a remote website.
 
 ## ⚠️ Limitations
 
-- Versions QR prises en charge : 1 à 10.
-- Niveau de correction d'erreurs : ECC-L.
-- Encodage Byte Mode uniquement.
-- Capacité maximale dépendante de la version et de la taille des données.
+- Supported QR versions: 1 to 10.
+- Error correction level: ECC-L.
+- Byte Mode encoding only.
+- Maximum capacity depends on the QR version and payload size.
 
-## 📜 Licence
+## 📜 License
 
-Projet libre d'utilisation, de modification et de distribution.
+See the repository for licensing information.
 
 ---
 
 **QRNativeGen** — Native Python QR Code Generator.
 
-*Made with Python 🐍*
+Made with Python 🐍
+
+**GitHub:** https://github.com/LukeCOULON/native_qrcode_pygenerator
